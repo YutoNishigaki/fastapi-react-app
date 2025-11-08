@@ -1,0 +1,13 @@
+name: ✨ タスク
+description: 機能追加や改善のためのテンプレート
+title: "タイトル"
+body:
+  - type: markdown
+    attributes:
+      value: |
+        機能追加や改善の提案を行う際は、以下のテンプレートに従って詳細を記入してください。
+  - type: textarea
+    id: summary
+    attributes:
+      label: "概要"
+      description: "提案する機能や改善点の概要を記入してください。"
