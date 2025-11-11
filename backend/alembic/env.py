@@ -4,8 +4,8 @@ from sqlalchemy import engine_from_config, pool
 from alembic import context
 import sys
 sys.path.insert(0, os.path.dirname(os.path.dirname(__file__)))
-from app.database import Base
-from app import models  # models を import して metadata を登録
+from app.db.database import Base
+from app.models import item  # models を import して metadata を登録
 
 config = context.config
 fileConfig(config.config_file_name)
