@@ -2,6 +2,7 @@ version: "3.8"
 
 services:
   backend:
+    container_name: fastapi
     build:
       context: .
       dockerfile: docker/backend/Dockerfile
@@ -15,6 +16,7 @@ services:
       - db
 
   frontend:
+    container_name: nextjs
     build:
       context: .
       dockerfile: docker/frontend/Dockerfile
@@ -25,6 +27,7 @@ services:
       - /app/node_modules
 
   db:
+    container_name: postgres
     build:
       context: .
       dockerfile: docker/db/Dockerfile
