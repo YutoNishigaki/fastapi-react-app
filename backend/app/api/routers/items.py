@@ -3,10 +3,10 @@ from app.repositories.items import create_item, get_items, get_item
 from app.schemas.item import ItemCreate, Item
 from sqlalchemy.orm import Session
 
-from app.db.database import SessionLocal, engine, Base
+from app.db.database import SessionLocal, Engine, Base
 
 # DB テーブル作成（開発用。migrations は alembic を使う）
-Base.metadata.create_all(bind=engine)
+Base.metadata.create_all(bind=Engine)
 
 # DB セッション依存
 def get_db():

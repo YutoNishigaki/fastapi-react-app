@@ -1,9 +1,22 @@
 from sqlalchemy import create_engine
-from sqlalchemy.orm import sessionmaker, declarative_base
-import os
+from sqlalchemy.orm import scoped_session,sessionmaker, declarative_base
 
-DATABASE_URL = os.environ.get("DATABASE_URL", "postgresql://postgres:postgres@db:5432/app")
+DATABASE_URL = "postgresql://postgres:postgres@db:5432/app"
 
-engine = create_engine(DATABASE_URL, future=True)
-SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
+Engine = create_engine(  
+    DATABASE_URL,
+    echo=True
+)
+
+# Sessionの作成
+SessionLocal = scoped_session(
+    sessionmaker(
+        autocommit = False,
+	    autoflush = False,
+	    bind = Engine
+    )
+)
+
+# modelで使用する
 Base = declarative_base()
+Base.query = SessionLocal.query_property()
